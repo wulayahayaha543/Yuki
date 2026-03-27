@@ -55,14 +55,14 @@ export function CoinDivination({ onStart, onComplete, disabled }: CoinDivination
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-end h-full z-10 pb-24 md:pb-32">
-      <div className="flex gap-6 md:gap-8 mb-8 perspective-1000">
+    <div className="relative flex flex-col items-center justify-end h-full z-10 pb-16 md:pb-24">
+      <div className="flex gap-4 md:gap-8 mb-8 perspective-1000">
         {[0, 1, 2].map((i) => (
           <motion.div
             key={i}
             custom={i}
             animate={controls}
-            className="w-20 h-20 rounded-full bg-amber-600/90 border-4 border-amber-800 shadow-[0_10px_20px_rgba(0,0,0,0.5),inset_0_0_15px_rgba(0,0,0,0.5)] flex items-center justify-center cursor-pointer transform-gpu"
+            className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-600/90 border-4 border-amber-800 shadow-[0_10px_20px_rgba(0,0,0,0.5),inset_0_0_15px_rgba(0,0,0,0.5)] flex items-center justify-center cursor-pointer transform-gpu"
             style={{ transformStyle: 'preserve-3d' }}
             whileHover={!isTossing && !disabled ? { scale: 1.05, y: -5 } : {}}
             whileTap={!isTossing && !disabled ? { scale: 0.95 } : {}}

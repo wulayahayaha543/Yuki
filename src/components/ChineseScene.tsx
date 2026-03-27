@@ -22,16 +22,16 @@ export function ChineseScene({ divinationState, onStart, onComplete }: ChineseSc
       {/* Floating Theme Image */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0">
         <motion.div
-          animate={{ y: [-15, 15, -15] }}
+          animate={{ y: [-8, 8, -8] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="relative w-[280px] h-[280px] md:w-[450px] md:h-[450px] opacity-80 -mt-32 md:-mt-20"
+          className="relative w-[280px] h-[280px] md:w-[550px] md:h-[550px] opacity-70 -translate-y-12 md:-translate-y-16"
         >
           {/* Ambient Glow */}
-          <div className="absolute inset-0 bg-rose-500/20 blur-[80px] rounded-full" />
+          <div className="absolute inset-0 bg-rose-500/20 blur-[100px] rounded-full" />
           <img
             src="https://i.postimg.cc/wxNwcjDT/image_1.png"
             alt="Chinese Divination Theme"
-            className="relative w-full h-full object-contain drop-shadow-[0_0_25px_rgba(244,63,94,0.3)]"
+            className="relative w-full h-full object-contain drop-shadow-[0_0_30px_rgba(244,63,94,0.3)]"
             referrerPolicy="no-referrer"
           />
         </motion.div>

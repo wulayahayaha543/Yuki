@@ -13,74 +13,74 @@ export function ResultPanel({ result, onReset, mode }: ResultPanelProps) {
   const isChinese = mode === 'chinese';
 
   return (
-    <div className="absolute inset-0 z-50 flex items-center justify-center p-6">
+    <div className="absolute inset-0 z-50 flex items-center justify-center p-4 md:p-8">
       <motion.div
         className={cn(
-          "relative w-full max-w-md p-8 md:p-12 rounded-3xl overflow-hidden",
-          "backdrop-blur-xl border flex flex-col items-center text-center shadow-2xl",
+          "relative w-full max-w-2xl p-6 md:p-12 rounded-[2rem] overflow-hidden",
+          "backdrop-blur-xl border-t border-l flex flex-col items-center text-center shadow-[0_30px_100px_rgba(0,0,0,0.6)]",
           isChinese 
-            ? "bg-amber-950/40 border-amber-800/50 text-amber-50" 
-            : "bg-indigo-950/40 border-indigo-800/50 text-indigo-50"
+            ? "bg-amber-950/20 border-amber-500/10 text-amber-50" 
+            : "bg-indigo-950/20 border-indigo-500/10 text-indigo-50"
         )}
-        initial={{ opacity: 0, y: 50, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 20, scale: 0.95 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, scale: 0.9, backdropFilter: "blur(0px)" }}
+        animate={{ opacity: 1, scale: 1, backdropFilter: "blur(24px)" }}
+        exit={{ opacity: 0, scale: 0.9, backdropFilter: "blur(0px)" }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-current to-transparent opacity-30" />
+        {/* Decorative background glow */}
         <div className={cn(
-          "absolute -top-24 -right-24 w-48 h-48 rounded-full blur-3xl opacity-20",
-          isChinese ? "bg-amber-500" : "bg-indigo-500"
+          "absolute -top-1/2 -left-1/2 w-full h-full rounded-full blur-[120px] opacity-30 animate-pulse",
+          isChinese ? "bg-amber-600" : "bg-indigo-600"
         )} />
-        <div className={cn(
-          "absolute -bottom-24 -left-24 w-48 h-48 rounded-full blur-3xl opacity-20",
-          isChinese ? "bg-rose-500" : "bg-purple-500"
-        )} />
-
+        
         <motion.h2 
           className={cn(
-            "text-2xl md:text-3xl font-serif mb-6 tracking-wide",
-            isChinese ? "text-amber-200" : "text-indigo-200"
+            "text-3xl md:text-5xl mb-8 tracking-wider leading-tight",
+            isChinese ? "font-chinese text-amber-200" : "font-serif italic text-indigo-200"
           )}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          transition={{ delay: 0.4, duration: 1 }}
         >
           {result.title}
         </motion.h2>
 
         <motion.div 
-          className="w-12 h-px bg-current opacity-20 mb-6"
+          className="w-24 h-px bg-current opacity-30 mb-10"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          transition={{ delay: 0.6, duration: 1 }}
         />
 
-        <motion.p 
-          className="text-base md:text-lg leading-relaxed opacity-90 font-light mb-10"
+        <motion.div
+          className="relative"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 1 }}
+          transition={{ delay: 0.8, duration: 1.2 }}
         >
-          {result.content}
-        </motion.p>
+          <p className={cn(
+            "text-base md:text-xl leading-relaxed font-light",
+            isChinese ? "tracking-widest" : "tracking-wide"
+          )}>
+            {result.content}
+          </p>
+        </motion.div>
 
         <motion.button
           onClick={onReset}
           className={cn(
-            "flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all",
-            "border hover:bg-white/10 active:scale-95",
+            "mt-12 flex items-center gap-3 px-8 py-4 rounded-full text-sm font-medium transition-all",
+            "border backdrop-blur-md hover:scale-105 active:scale-95 group",
             isChinese 
-              ? "border-amber-700/50 text-amber-200 hover:border-amber-500/50" 
-              : "border-indigo-700/50 text-indigo-200 hover:border-indigo-500/50"
+              ? "border-amber-500/30 text-amber-200 hover:bg-amber-500/10" 
+              : "border-indigo-500/30 text-indigo-200 hover:bg-indigo-500/10"
           )}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
+          transition={{ delay: 1.2, duration: 1 }}
         >
-          <RefreshCw className="w-4 h-4" />
-          <span>重新占卜</span>
+          <RefreshCw className="w-4 h-4 group-hover:rotate-180 transition-transform duration-700" />
+          <span className="tracking-[0.2em]">重寻天机</span>
         </motion.button>
       </motion.div>
     </div>

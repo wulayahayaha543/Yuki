@@ -85,8 +85,8 @@ export function TarotDivination({ onStart, onComplete, disabled }: TarotDivinati
       if (index === i) {
         return {
           x: 0,
-          y: isMobile ? -200 : -250,
-          scale: isMobile ? 1.5 : 1.3,
+          y: isMobile ? -160 : -200,
+          scale: isMobile ? 1.4 : 1.2,
           rotateZ: 0,
           zIndex: 50,
           transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
@@ -106,8 +106,8 @@ export function TarotDivination({ onStart, onComplete, disabled }: TarotDivinati
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-end h-full z-10 perspective-1000 pb-24 md:pb-40">
-      <div className="relative w-24 h-36 md:w-32 md:h-48 cursor-pointer mb-8" onClick={!isFanned ? handleShuffleAndFan : undefined}>
+    <div className="relative flex flex-col items-center justify-end h-full z-10 perspective-1000 pb-16 md:pb-32">
+      <div className="relative w-20 h-32 md:w-32 md:h-48 cursor-pointer mb-8" onClick={!isFanned ? handleShuffleAndFan : undefined}>
         {[0, 1, 2, 3, 4].map((i) => (
           <motion.div
             key={i}

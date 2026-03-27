@@ -6,6 +6,7 @@ import { ChineseScene } from './components/ChineseScene';
 import { WesternScene } from './components/WesternScene';
 import { ResultPanel } from './components/ResultPanel';
 import { generateDivination } from './services/llm';
+import { cn } from './lib/utils';
 
 export default function App() {
   const [currentMode, setCurrentMode] = useState<DivinationMode>('chinese');
@@ -64,8 +65,8 @@ export default function App() {
       </AnimatePresence>
 
       {/* Top Navigation / Mode Toggle */}
-      <div className="absolute top-0 left-0 w-full p-6 z-50 flex justify-center pointer-events-none">
-        <div className="pointer-events-auto">
+      <div className="absolute top-0 left-0 w-full p-6 md:p-10 z-50 flex justify-center pointer-events-none">
+        <div className="pointer-events-auto scale-110 md:scale-125">
           <ModeToggle currentMode={currentMode} onChange={handleModeChange} disabled={divinationState !== 'initial'} />
         </div>
       </div>
